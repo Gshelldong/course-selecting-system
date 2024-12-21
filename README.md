@@ -55,3 +55,7 @@
 
 ## 启动方式
 
+```python
+python bin/start.py
+```
+
