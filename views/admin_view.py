@@ -24,7 +24,24 @@ def login():
         print('请输入正确的用户名和密码.')
 
 def create_school():
-    pass
+    """
+    用户输入学校的名称和地址
+    调用接口进行创建
+    接收返回值
+    展示结果
+    :return:
+    """
+    school_name = input("请输入学校名称: ").strip()
+    school_address = input("请输入学校地址: ").strip()
+
+    if school_address and school_name:
+        res = admin_interface.create_school_interface(school_name,school_address)
+        if res:
+            print('学校创建成功.')
+        else:
+            print('学校已经创建.')
+    else:
+        print("请输入正确的学校名称和地址.")
 
 def create_teacher():
     pass
