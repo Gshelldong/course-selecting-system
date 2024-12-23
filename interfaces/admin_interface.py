@@ -67,7 +67,25 @@ def create_school_interface(school_name,school_address):
     return True
 
 
+def get_school_interface() -> list:
+    """
+    获取到所有校区的名字
+    :return: list
+    """
+    schools = modles.School.get_all()
+    return schools
 
+
+def create_teacher_interface(teacher_name,school,password='123'):
+    teacher = modles.Teacher.get_obj(teacher_name)
+    if teacher:
+        # 如果存在老师的话就不创建了
+        return False
+    teacher = modles.Teacher(teacher_name,school,password)
+    teacher.save()
+    return True
+
+# 调试管理员的接口
 # if __name__ == '__main__':
 #     res = register_admin('admin','123')
 #     print(res)

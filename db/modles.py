@@ -17,6 +17,10 @@ class BaseClass:
         # 这里的对象是从数据层的持久化文件中拿出来的
         return DBHander.get_obj(cls.__name__.lower(), name)
 
+    @classmethod
+    def get_all(cls):
+        return DBHander.get_all(cls.__name__.lower())
+
 class School(BaseClass):
     def __init__(self,name,address,):
         self.name = name
@@ -37,10 +41,10 @@ class Classes(BaseClass):
 
 
 class Teacher(BaseClass):
-    def __init__(self,name,password,school_name):
+    def __init__(self,name,school_name,password):
         self.name = name
+        self.school_name = school_name
         self.password = password
-        self.school_name = name
         self.class_name = None
 
 

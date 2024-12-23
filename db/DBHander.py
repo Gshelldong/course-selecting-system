@@ -5,7 +5,7 @@
  teacher
  student
 """
-import os.path
+import os
 import pickle
 from conf import settings
 
@@ -59,3 +59,14 @@ def get_obj(cls_name,name):
         with open(path,mode='rb') as f:
             res = pickle.load(f)
         return res
+
+def get_all(obj_name: object) -> list:
+    """
+    :param obj_name: 类的名称，要查看哪一类的所有对象
+    :return: 返回的list是从类文件夹下面读取出来的对象名称
+    """
+    obj_path = os.path.join(settings.DATA_PATH,obj_name)
+    if not os.path.exists(obj_path):
+        return False
+    obj_names = os.listdir(obj_path)
+    return obj_names

@@ -2,7 +2,7 @@ from libs import common
 from interfaces import admin_interface
 
 """
-管理视图，登陆,创建学校,创建讲师， 创建班级，创建课程,给老师指定班级
+管理视图,登陆,创建学校,创建讲师,创建班级,创建课程,给老师指定班级
 """
 
 def login():
@@ -44,7 +44,31 @@ def create_school():
         print("请输入正确的学校名称和地址.")
 
 def create_teacher():
-    pass
+    """
+    6. 创建讲师角色时要关联学校
+    """
+    schools = admin_interface.get_school_interface()
+
+    # 选择学校对象
+    school = common.select_obj(schools, "校区")
+
+    teacher_name = input("请输入老师的名字: ")
+
+    if teacher_name:
+        t_create_res = admin_interface.create_teacher_interface(teacher_name,school)
+        if t_create_res:
+            print('老师创建成功.')
+        else:
+            print('老师已经存在请重试.')
+    else:
+        print('请输入正确的名称.')
+
+
+
+
+
+
+
 
 def select_course():
     pass
