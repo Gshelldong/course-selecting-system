@@ -46,13 +46,16 @@ def create_school():
 def create_teacher():
     """
     6. 创建讲师角色时要关联学校
+    先选择学校，通过接口把学校列出
+    根据用户选择确定的学校确认校区
+    根据用户输入的老师名称确认老师名称
     """
     schools = admin_interface.get_school_interface()
 
     # 选择学校对象
     school = common.select_obj(schools, "校区")
 
-    teacher_name = input("请输入老师的名字: ")
+    teacher_name = input("请输入老师的名字: ").strip()
 
     if teacher_name:
         t_create_res = admin_interface.create_teacher_interface(teacher_name,school)
@@ -65,16 +68,44 @@ def create_teacher():
 
 
 
+def create_course():
+    """
+    2. 创建linux , python , go 3个课程 ， linux\py 在北京开， go 在上海开
 
-
-
-
+    3. 课程包含，周期，价格，通过学校创建课程
+   课程类对象
+       属性:名字,价格,周期
+       行为: 暂时无
+    1.调用接口拿到校区
+    2.根据用户号选择确认校区
+    3.获取用户输入的课程信息
+    4.调用接口保存课程信息
+    :return:
+    """
+    pass
 
 def select_course():
+    """
+    展示课程并选择一个正确的课程
+    1.获取校区下的所有课程
+    2.输入课程名称
+    3.判定是否正确
+        正确返回相应的课程名称
+    :return:
+    """
     pass
 
-def create_course():
+
+def create_class():
+    """
+    4. 通过学校创建班级， 班级关联课程、讲师
+   班级对象
+   属性:名字, 课程名称
+   老师由管理管之后进行安排
+    :return:
+    """
     pass
+
 
 
 funcs = {

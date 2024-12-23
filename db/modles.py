@@ -34,7 +34,7 @@ class Course(BaseClass):
         self.school_name = school_name
 
 class Classes(BaseClass):
-    def __init__(self,name,course_name):
+    def __init__(self,name,school,course_name):
         self.name = name
         self.name = course_name
         self.teacher_name = None
@@ -46,7 +46,6 @@ class Teacher(BaseClass):
         self.school_name = school_name
         self.password = password
         self.class_name = None
-
 
 class Student(BaseClass):
     def __init__(self,name,password,school_name,score):

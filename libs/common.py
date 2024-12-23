@@ -23,9 +23,9 @@ def select_obj(obj_name_list,obj_type):
         print('请先创建%s!'%obj_type)
     else:
         for obj_name in obj_name_list:
-            print(obj_name_list.index(obj_name), obj_name)
+            print(f'编号 -> 校区\n{obj_name_list.index(obj_name)} -> {obj_name}')
 
-    choice = input('请选择%s: '%obj_type)
+    choice = input('\n请选择%s校区编号: '%obj_type)
     if choice.isdigit():
         choice = int(choice)
         if choice in range(0,len(obj_name_list)+1):
