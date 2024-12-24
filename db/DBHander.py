@@ -60,13 +60,19 @@ def get_obj(cls_name,name):
             res = pickle.load(f)
         return res
 
-def get_all(obj_name: object) -> list:
+def get_all(cls_name) -> list:
     """
-    :param obj_name: 类的名称，要查看哪一类的所有对象
+    :param cls_name: 类的名称，要查看哪一类的所有对象
     :return: 返回的list是从类文件夹下面读取出来的对象名称
+    会根据cls_name拼接读取对象的路径，这样获取的就是一类对象
     """
-    obj_path = os.path.join(settings.DATA_PATH,obj_name)
+    obj_path = os.path.join(settings.DATA_PATH,cls_name)
     if not os.path.exists(obj_path):
         return False
     obj_names = os.listdir(obj_path)
-    return obj_names
+    obj_lists = []
+    for obj_name in obj_names:
+        obj = get_obj(cls_name,obj_name)
+        obj_lists.append(obj)
+    return obj_lists
+

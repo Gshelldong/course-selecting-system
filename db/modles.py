@@ -27,31 +27,33 @@ class School(BaseClass):
         self.address = address
 
 class Course(BaseClass):
-    def __init__(self,class_name,price,cycle,school_name):
-        self.class_name = class_name
+    def __init__(self,school,course_name,price,cycle):
+        self.school = school
+        self.name = course_name
         self.price = price
         self.cycle = cycle
-        self.school_name = school_name
+
 
 class Classes(BaseClass):
-    def __init__(self,name,school,course_name):
+    def __init__(self, name, school, course_name):
         self.name = name
-        self.name = course_name
+        self.school = school
+        self.course = course_name
         self.teacher_name = None
 
 
 class Teacher(BaseClass):
-    def __init__(self,name,school_name,password):
+    def __init__(self,name,school,password):
         self.name = name
-        self.school_name = school_name
+        self.school = school
         self.password = password
         self.class_name = None
 
 class Student(BaseClass):
-    def __init__(self,name,password,school_name,score):
+    def __init__(self,name,password,school,score):
         self.name = name
         self.password = password
-        self.school_name = school_name
+        self.school = school
         self.class_name = None
         self.is_pay = False
         self.score = score
