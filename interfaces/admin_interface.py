@@ -170,8 +170,6 @@ def t_share_course_interface(school,teacher_name,course,class_team):
     return True,'分配老师到班级课程成功!'
 
 
-
-
 # 调试管理员的接口
 # if __name__ == '__main__':
 #     res = register_admin('admin','123')
