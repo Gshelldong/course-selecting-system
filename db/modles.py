@@ -50,7 +50,7 @@ class Teacher(BaseClass):
         self.class_name = None
 
 class Student(BaseClass):
-    def __init__(self,name,password,school,score):
+    def __init__(self,name,password,school,score=0):
         self.name = name
         self.password = password
         self.school = school

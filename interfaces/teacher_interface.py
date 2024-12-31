@@ -46,6 +46,8 @@ def modify_pas_interface(user_name,password):
     teacher.save()
     return True
 
-# TODO
 def modify_source_interface(student,source):
-    pass
+    student = modles.Student.get_obj(student)
+    if student:
+        student.score = source
+        return True

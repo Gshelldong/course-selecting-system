@@ -101,7 +101,7 @@ funcs = {
     "2": show_class,
     "3": show_students,
     "4": modify_password,
-    "5": modify_password
+    "5": modify_source
 }
 
 msg = """
