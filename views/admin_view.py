@@ -166,6 +166,10 @@ def select_course():
     else:
         print(msg)
 
+def quit():
+    global user_status
+    user_status = None
+    print(f'{user_status}注销登陆!')
 
 funcs = {
     "1": login,
@@ -188,4 +192,4 @@ msg = ("""
 
 
 def view():
-    common.select_func(funcs, msg)
+    common.select_func(funcs, msg, quit)

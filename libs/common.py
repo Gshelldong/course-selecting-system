@@ -1,9 +1,11 @@
-def select_func(funcs_dict,msg):
+def select_func(funcs_dict,msg,callback=None):
     while True:
         print(msg)
         choice = input("(按q退出.) >>>: ")
         if choice == 'q':
             print("退出系统!")
+            if callback is callable:
+                callback()
             break
         if choice in funcs_dict:
             funcs_dict[choice]()
@@ -31,3 +33,25 @@ def select_obj(obj_name_list,obj_type):
             if choice in range(0,len(obj_name_list)+1):
                 obj_name = obj_name_list[choice]
         return obj_name
+
+def auth(auth_type):
+    def auth_login(func):
+        from views import admin_view,student_view,teacher_view
+        def inner(*args,**kwargs):
+            if auth_type == 'admin':
+                module = admin_view
+            elif auth_type == 'student':
+                module = student_view
+            elif auth_type == 'teacher':
+                module = teacher_view
+            else:
+                raise "没有此认证类型!"
+
+            if module.user_status:
+                res = func(*args,**kwargs)
+                return res
+            else:
+                print("请先登陆!")
+                module.login()
+        return inner
+    return auth_login

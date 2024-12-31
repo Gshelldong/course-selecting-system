@@ -32,3 +32,25 @@ def pay_money_interface(user):
     user.is_pay = True
     user.save()
     return True,"缴费成功."
+
+def get_classes_interface(user):
+    students = modles.Student.get_obj(user)
+    classes = modles.Classes.get_all()
+    class_list = []
+    for class_team in classes:
+        if class_team.school == students.school:
+            class_list.append(class_team.name)
+    return class_list
+
+
+def select_class_interface(user, class_team):
+    student = modles.Student.get_obj(user)
+    if student.class_name != None:
+        return False
+    student.class_name == class_team
+    student.save()
+    return True
+
+def select_score_interface(user):
+    student = modles.Student.get_obj(user)
+    source = student.score

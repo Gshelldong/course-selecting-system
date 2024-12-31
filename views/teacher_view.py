@@ -96,6 +96,11 @@ def modify_source():
     else:
         print("修改失败")
 
+def quit():
+    global user_status
+    user_status = None
+    print(f'{user_status}注销登陆!')
+
 funcs = {
     "1": login,
     "2": show_class,
@@ -114,4 +119,4 @@ msg = """
 """
 
 def view():
-    common.select_func(funcs,msg)
+    common.select_func(funcs,msg, quit)

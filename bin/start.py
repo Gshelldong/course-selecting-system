@@ -14,6 +14,5 @@ from views import main_view
 3.环境变量的添加应该添加在导入项目内部模块的之前。
 """
 
-
 if __name__ == '__main__':
     main_view.run()

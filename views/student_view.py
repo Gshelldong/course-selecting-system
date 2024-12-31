@@ -45,7 +45,7 @@ def login():
     else:
         print("请输入正确的用户名和密码")
 
-
+@common.auth("student")
 def pay_money():
     global user_status
     user = user_status
@@ -66,18 +66,38 @@ def pay_money():
         print("请缴纳正确的金额.")
 
 def select_class():
-    pass
+    user = user_status
+    class_list = student_interface.get_classes_interface(user)
 
-def select_source():
-    pass
+    class_team = common.select_obj(class_list,"班级")
+    res = student_interface.select_class_interface(user, class_team)
+    if not res:
+        print("学生已经选定班级.")
+        return
+    print(f"{user}选择班级成功.")
+
+def select_scorce():
+    user = user_status
+    source = student_interface.select_score_interface(user)
+    if not source:
+        print(f"{user}还没有成绩.")
+        return
+    print(f"{user}的成绩是{source}")
+
+
 
 funcs = {
     "1": registry,
     "2": login,
     "3": pay_money,
     "4": select_class,
-    "5": select_source
+    "5": select_scorce
 }
+
+def quit():
+    global user_status
+    user_status = None
+    print(f'{user_status}注销登陆!')
 
 msg = """
 请选择学生功能:
@@ -93,4 +113,4 @@ def view():
     展示学生所有功能。
     :return:
     """
-    common.select_func(funcs,msg)
+    common.select_func(funcs,msg, quit)
