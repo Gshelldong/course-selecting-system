@@ -50,4 +50,5 @@ def modify_source_interface(student,source):
     student = modles.Student.get_obj(student)
     if student:
         student.score = source
+        student.save()
         return True

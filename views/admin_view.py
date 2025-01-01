@@ -4,7 +4,7 @@ from interfaces import admin_interface
 """
 管理视图,登陆,创建学校,创建讲师,创建班级,创建课程,给老师指定班级
 """
-
+user_status=None
 
 def login():
     """
@@ -15,16 +15,18 @@ def login():
     """
     username = input('请输入用户名: ')
     password = input('请输入密码:  ')
+    global user_status
     if username and password:
         res = admin_interface.login(username, password)
         if res:
+            user_status = username
             print('登陆成功!')
         else:
             print('登陆失败!')
     else:
         print('请输入正确的用户名和密码.')
 
-
+@common.auth("admin")
 def create_school():
     """
     用户输入学校的名称和地址
@@ -45,7 +47,7 @@ def create_school():
     else:
         print("请输入正确的学校名称和地址.")
 
-
+@common.auth("admin")
 def create_teacher():
     """
     6. 创建讲师角色时要关联学校
@@ -69,7 +71,7 @@ def create_teacher():
     else:
         print('请输入正确的名称.')
 
-
+@common.auth("admin")
 def create_course():
     """
     2. 创建linux , python , go 3个课程 ， linux\py 在北京开， go 在上海开
@@ -100,7 +102,7 @@ def create_course():
     else:
         print('请输入正确的课程名称！')
 
-
+@common.auth("admin")
 def create_class():
     """
     4. 通过学校创建班级,班级关联课程、讲师
@@ -127,7 +129,7 @@ def create_class():
     else:
         print("请输入正确的班级名称.")
 
-
+@common.auth("admin")
 def select_course():
     """
     要实现：

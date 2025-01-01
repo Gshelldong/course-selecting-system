@@ -47,7 +47,7 @@ def select_class_interface(user, class_team):
     student = modles.Student.get_obj(user)
     if student.class_name != None:
         return False
-    student.class_name == class_team
+    student.class_name = class_team
     student.save()
     return True
 

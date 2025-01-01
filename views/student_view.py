@@ -65,6 +65,7 @@ def pay_money():
     else:
         print("请缴纳正确的金额.")
 
+@common.auth("student")
 def select_class():
     user = user_status
     class_list = student_interface.get_classes_interface(user)
@@ -76,6 +77,7 @@ def select_class():
         return
     print(f"{user}选择班级成功.")
 
+@common.auth("student")
 def select_scorce():
     user = user_status
     source = student_interface.select_score_interface(user)
@@ -96,8 +98,9 @@ funcs = {
 
 def quit():
     global user_status
-    user_status = None
     print(f'{user_status}注销登陆!')
+    user_status = None
+
 
 msg = """
 请选择学生功能:

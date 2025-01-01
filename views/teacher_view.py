@@ -22,6 +22,7 @@ def login():
     else:
         print('请输入正确的用户名和密码!')
 
+@common.auth("teacher")
 def show_class():
     teacher_name = user_status
     classes = teacher_interface.select_classes_interface(teacher_name)
@@ -30,7 +31,7 @@ def show_class():
     for class_team in classes:
         print(class_team)
 
-
+@common.auth("teacher")
 def show_students():
     """
     1.展示登陆状态老师管理的班级，让老师选择班级
@@ -59,6 +60,7 @@ def show_students():
     是否缴费：{student_obj.is_pay}
     学生成绩：{student_obj.score}""")
 
+@common.auth("teacher")
 def modify_password():
     new_pas = input("请输入新密码: ").strip()
     chk_pas = input("请再次输入密码: ").strip()
@@ -72,6 +74,7 @@ def modify_password():
     else:
         print("两次输入密码不一致!")
 
+@common.auth("teacher")
 def modify_source():
     teacher = user_status
     classes = teacher_interface.get_class_interface(teacher)

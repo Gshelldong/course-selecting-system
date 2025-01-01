@@ -4,7 +4,7 @@ def select_func(funcs_dict,msg,callback=None):
         choice = input("(按q退出.) >>>: ")
         if choice == 'q':
             print("退出系统!")
-            if callback is callable:
+            if callable(callback):
                 callback()
             break
         if choice in funcs_dict:
