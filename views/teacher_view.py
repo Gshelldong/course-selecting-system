@@ -1,6 +1,8 @@
 from libs import common
 from interfaces import teacher_interface
 
+logger = common.get_logger('teacher_view')
+
 """
 老师的功能
    7.2 讲师视图,登陆,(注册没有 由管理员来分配账号)， 查看班级学员列表 ， 修改所管理的学员的成绩 ,修改密码
@@ -101,8 +103,10 @@ def modify_source():
 
 def quit():
     global user_status
-    user_status = None
+    logger.info(f'{user_status}注销了登陆.')
     print(f'{user_status}注销登陆!')
+    user_status = None
+
 
 funcs = {
     "1": login,

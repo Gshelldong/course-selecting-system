@@ -1,6 +1,8 @@
 from libs import common
 from interfaces import admin_interface
 
+logger = common.get_logger('admin_log')
+
 """
 管理视图,登陆,创建学校,创建讲师,创建班级,创建课程,给老师指定班级
 """
@@ -20,9 +22,12 @@ def login():
         res = admin_interface.login(username, password)
         if res:
             user_status = username
+            logger.info(f'{username}登陆成功.')
             print('登陆成功!')
         else:
+            logger.warning(f'{username}登陆失败.')
             print('登陆失败!')
+
     else:
         print('请输入正确的用户名和密码.')
 
@@ -41,6 +46,7 @@ def create_school():
     if school_address and school_name:
         res = admin_interface.create_school_interface(school_name, school_address)
         if res:
+            logger.info(f'{user_status}创建了{school_name}校区.')
             print('学校创建成功.')
         else:
             print('学校已经创建.')
@@ -65,6 +71,7 @@ def create_teacher():
     if teacher_name:
         t_create_res = admin_interface.create_teacher_interface(teacher_name, school)
         if t_create_res:
+            logger.info(f'{user_status}创建了老师{teacher_name}用户.')
             print('老师创建成功.')
         else:
             print('老师已经存在请重试.')

@@ -1,0 +1,4 @@
+[2025-01-01 14:16:56,352][MainThread:5740][task_id:teacher-log][teacher_interface.py:10][INFO][hd登陆成功.]
+[2025-01-01 14:17:05,943][MainThread:5740][task_id:teacher-log][teacher_interface.py:32][INFO][hd查看了班级.]
+[2025-01-01 14:17:16,011][MainThread:5740][task_id:teacher-log][teacher_interface.py:60][INFO][修改了<db.modles.Student object at 0x000001CC1B5682F0>的成绩为96.]
+[2025-01-01 14:17:53,657][MainThread:5740][task_id:teacher_view][teacher_view.py:106][INFO][hd注销了登陆.]

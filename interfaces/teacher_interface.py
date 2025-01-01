@@ -1,9 +1,13 @@
 from db import modles
+from libs import common
+
+logger = common.get_logger('teacher-log')
 
 def login_interface(username,password):
     teacher = modles.Teacher.get_obj(username)
     if teacher:
         if teacher.name == username and teacher.password == password:
+            logger.info(f'{username}登陆成功.')
             return True
 
 
@@ -25,6 +29,7 @@ def get_class_interface(teacher):
     for class_team in classes:
         if class_team.teacher_name == teacher:
             class_list.append(class_team.name)
+    logger.info(f'{teacher}查看了班级.')
     return class_list
 
 def select_student_interface(class_team):
@@ -44,6 +49,7 @@ def modify_pas_interface(user_name,password):
     teacher = modles.Teacher.get_obj(user_name)
     teacher.password = password
     teacher.save()
+    logger.info(f'{user_name}修改了密码.')
     return True
 
 def modify_source_interface(student,source):
@@ -51,4 +57,5 @@ def modify_source_interface(student,source):
     if student:
         student.score = source
         student.save()
+        logger.info(f'修改了{student.name}的成绩为{source}.')
         return True

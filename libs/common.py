@@ -1,3 +1,7 @@
+import logging.config
+from conf import settings
+
+
 def select_func(funcs_dict,msg,callback=None):
     while True:
         print(msg)
@@ -55,3 +59,8 @@ def auth(auth_type):
                 module.login()
         return inner
     return auth_login
+
+def get_logger(log_name):
+    logging.config.dictConfig(settings.LOGGING_DIC)
+    logger = logging.getLogger(log_name)
+    return logger
